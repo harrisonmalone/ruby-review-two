@@ -15,12 +15,22 @@
 # 5. What is an instance variable?
 # it is an variable created from class
 # 6. Choose an everyday item (cup, computer, person) and give it two instance variables (which will be attributes), and one method (to describe a function of the object). Code the initialize method in full (for these attributes only), and the definition line of the instance method (but do not code the entire method).
+class Cup
+  attr_reader :color, :weight
+  def initialize(color, weight)
+    @color = color
+    @weight = weight
+  end
 
+  def printProp
+    puts "The cup is of #{@color} and weighs #{@weight}"
+  end
+end
 # 7. What is handy about using gems in Ruby?
 # No need to reinvent the wheels
 # 8. Define a class called fish, and leave it empty.
 class Fish
-  attr_accessor name, species
+  attr_accessor :name, :species
 end
 # 9. How would you use that class to make three fish objects?
 # fish1 = Fish.new
@@ -34,6 +44,7 @@ end
 
 fish1 = Fish.new
 fish1.name = 'fred'
+fish1.species = 'stuff'
 
 # b. on a second line, give that fish object’s name attribute the value of ‘Fred’ (assume you have access).
 
@@ -57,6 +68,25 @@ def true_string(arr, str)
   end
   false
 end
-# 15. Write a method that takes one argument, a number, and that returns true if the number is divisible by three, and false otherwise.
 
+# 15. Write a method that takes one argument, a number, and that returns true if the number is divisible by three, and false otherwise.
+def div_three(num)
+  num % 3 == 0
+end
 # 16. You must use your previous method in this next question. Write another method that takes an array (of numbers) as an argument. This method will use your first method to return two arrays (within one array - an array of arrays). The first array contains the numbers that are divisible by 3, and the other contains the rest of the numbers. For example, if you pass the second method the array [9, 4, 3, 5, 30, 2, 8] it would return [[9, 3, 30],[4, 5, 2, 8]].
+
+def double_array(arr)
+  arr_div_three = []
+  arr_not_div_three = []
+  arr.each do |number|
+    if div_three(number)
+      arr_div_three.push(number)
+    else
+      arr_not_div_three.push(number)
+    end
+  end
+  result = [arr_div_three, arr_not_div_three]
+  result
+end
+
+p double_array([3, 6, 9, 4])
