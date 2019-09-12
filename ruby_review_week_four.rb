@@ -26,6 +26,9 @@ class Cup
     puts "The cup is of #{@color} and weighs #{@weight}"
   end
 end
+
+smallcup = Cup.new('red', 'light')
+bigcup = Cup.new('blue', 'heavy')
 # 7. What is handy about using gems in Ruby?
 # No need to reinvent the wheels
 # 8. Define a class called fish, and leave it empty.
